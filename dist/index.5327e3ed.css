@@ -1,2 +1,0 @@
-.snackbar{color:#f1f1f1;min-height:50px;min-width:290px;box-sizing:border-box;visibility:hidden;will-change:transform;background:#323232;border-radius:2px;padding:16px 24px 12px;font-size:90%;transition:visibility .3s,transform .3s;display:inline-block;position:fixed;bottom:1rem;left:1rem;transform:translateY(100px);box-shadow:0 2px 5px #00000042}.snackbar--visible{visibility:visible;transform:none}.result{gap:50px;display:flex}
-/*# sourceMappingURL=index.5327e3ed.css.map */
