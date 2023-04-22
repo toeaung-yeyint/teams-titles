@@ -2,10 +2,9 @@ import snackbar from "snackbar";
 snackbar.duration = 3000;
 
 // this handles searching for a team
-const form = document.querySelector(".form");
+const searchForm = document.querySelector(".search-form");
 const result = document.querySelector(".result");
-const reset = document.querySelector(".reset-btn");
-form.addEventListener("submit", (e) => {
+searchForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 	result.textContent = "";
 	let teamName = document.querySelector("#team-name");
