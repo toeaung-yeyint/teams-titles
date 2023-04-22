@@ -1,71 +1,65 @@
 import snackbar from "snackbar";
 snackbar.duration = 3000;
 
-// this handles searching a team
+// this handles searching for a team
 const form = document.querySelector(".form");
 const result = document.querySelector(".result");
 const reset = document.querySelector(".reset-btn");
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
-	const teamName = document.querySelector("#team-name");
-	switch (teamName.value.toLowerCase()) {
-		case "arsenal":
-			result.insertAdjacentHTML(
-				"beforeend",
-				"<div><h3>Arsenal</h3><li>2023 Premier league</li><li>2024 FA cup</li></div>"
+	result.textContent = "";
+	let teamName = document.querySelector("#team-name");
+	let teamId;
+	fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams")
+		.then((res) => res.json())
+		.then((data) => {
+			teamId = Number.parseInt(
+				data.find(
+					(team) =>
+						team.name.toLowerCase() === teamName.value.toLowerCase().trim()
+				).id
 			);
-			break;
-		case "liverpool":
-			result.insertAdjacentHTML(
-				"beforeend",
-				"<div><h3>Liverpool</h3><li>2020 Champion league</li><li>2021 Premier league</li></div>"
-			);
-			break;
-		case "chelsea":
-			result.insertAdjacentHTML(
-				"beforeend",
-				"<div><h3>Chelsea</h3><li>2018 Premier league</li><li>2016 Premier league</li></div>"
-			);
-			break;
-		case "manchester united":
-			result.insertAdjacentHTML(
-				"beforeend",
-				"<div><h3>Manchester United</h3><li>2016 Europa league</li><li>2016 English cup</li></div>"
-			);
-			break;
-		default:
+			fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams/${teamId}`)
+				.then((res) => res.json())
+				.then((data) => {
+					result.insertAdjacentHTML("beforeend", `<h3>${data.name}</h3>`);
+					data.titles.forEach((title) => {
+						result.insertAdjacentHTML("beforeend", `<li>${title}</li>`);
+					});
+					teamName.value = "";
+				});
+		})
+		.catch(() => {
 			snackbar.show("No data for the team you are searching for!!!");
-	}
-	if (result.childNodes.length > 3) {
-		result.firstChild.remove();
-	}
-	teamName.value = "";
-});
-reset.addEventListener("click", () => {
-	result.innerHTML = "";
+			teamName.value = "";
+		});
 });
 
-// this handles adding a team
-const teams = [];
-const addForm = document.querySelector(".add-form");
-addForm.addEventListener("submit", (e) => {
-	e.preventDefault();
-	const addTeamName = document.querySelector("#add-team-name");
-	const addTitles = document.querySelector("#add-titles");
-	let teamName = addTeamName.value.trim().toLowerCase();
-	let teamTitles = addTitles.value.split(",");
-	teamTitles = teamTitles.map((title) => {
-		return title.toLowerCase().trim();
-	});
-	const team = {
-		name: teamName,
-		titles: teamTitles,
-	};
-	teams.push(team);
-	addTeamName.value = "";
-	addTitles.value = "";
-	console.log(team);
-	console.log(teams);
-});
+// fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
+// 	method: "post",
+// 	headers: { "content-type": "application/json" },
+// 	body: JSON.stringify({ name: "PSG", title: ["title1", "title2"] }),
+// })
+// 	.then((res) => res.json())
+// 	.then((data) => console.log(data));
 
-// this handles deleting a team
+// fetch('https://64434a3e466f7c2b4b51171b.mockapi.io/teams').then(res => res.json()).then(data => {
+// 	teamName = data.find(team => {return team.name === 'Arsenal'}).name
+// 	teamTitles = data.find(team => {return team.name === 'Arsenal'}).titles
+// })
+
+// fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams/4", {
+// 	method: "delete",
+// })
+// 	.then((res) => res.json())
+// 	.then((data) => console.log(data));
+
+// fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams/1", {
+// 	method: "put",
+// 	headers: { "content-type": "application/json" },
+// 	body: JSON.stringify({ name: "Liverpool" }),
+// })
+// 	.then((res) => res.json())
+// 	.then((data) => console.log(data));
+
+// snackbar.show("No data for the team you are searching for!!!");
