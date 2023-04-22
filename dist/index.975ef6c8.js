@@ -561,6 +561,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _snackbar = require("snackbar");
 var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
 (0, _snackbarDefault.default).duration = 3000;
+// this handles searching a team
 const form = document.querySelector(".form");
 const result = document.querySelector(".result");
 const reset = document.querySelector(".reset-btn");
@@ -589,6 +590,28 @@ form.addEventListener("submit", (e)=>{
 reset.addEventListener("click", ()=>{
     result.innerHTML = "";
 });
+// this handles adding a team
+const teams = [];
+const addForm = document.querySelector(".add-form");
+addForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const addTeamName = document.querySelector("#add-team-name");
+    const addTitles = document.querySelector("#add-titles");
+    let teamName = addTeamName.value.trim().toLowerCase();
+    let teamTitles = addTitles.value.split(",");
+    teamTitles = teamTitles.map((title)=>{
+        return title.toLowerCase().trim();
+    });
+    const team = {
+        name: teamName,
+        titles: teamTitles
+    };
+    teams.push(team);
+    addTeamName.value = "";
+    addTitles.value = "";
+    console.log(team);
+    console.log(teams);
+}); // this handles deleting a team
 
 },{"snackbar":"nwWOh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"nwWOh":[function(require,module,exports) {
 "use strict";
