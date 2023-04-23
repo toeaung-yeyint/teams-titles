@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Project1</title>
-		<link rel="stylesheet" href="https://toeaung-yeyint.github.io/teams-titles/dist/index.2cdaf7bc.css">
-		<script src="https://toeaung-yeyint.github.io/teams-titles/dist/index.975ef6c8.js" defer=""></script>
+		<link
+			rel="stylesheet"
+			href="https://toeaung-yeyint.github.io/teams-titles/dist/index.2cdaf7bc.css"
+		/>
+		<script
+			src="https://toeaung-yeyint.github.io/teams-titles/dist/index.975ef6c8.js"
+			defer=""
+		></script>
 	</head>
 	<body>
 		<div>
-			<h1>Check a premier league team's titles</h1>
-			<form class="form" action="">
-				<label for="team-name">Team Name</label>
-				<input id="team-name" type="text" placeholder="enter a team name" required="">
+			<h1>Search a team</h1>
+			<form class="search-form" action="">
+				<label for="search-team-name"
+					>The team name you would like to search for:</label
+				>
+				<input id="search-team-name" type="text" required="" />
 				<button>Search</button>
 			</form>
 		</div>
@@ -23,11 +31,33 @@
 		<div>
 			<h1>Add a team</h1>
 			<form class="add-form" action="">
-				<label for="add-team-name">Team Name</label>
-				<input id="add-team-name" type="text" placeholder="enter a team name" required="">
-				<label for="add-titles">Titles</label>
-				<textarea name="" id="add-titles" cols="200" rows="1"></textarea>
+				<label for="add-team-name">The team name you would like to add:</label>
+				<input id="add-team-name" type="text" required="" />
+				<div><label for="add-titles">Titles:</label></div>
+				<textarea name="" id="add-titles" cols="80" rows="1"></textarea>
 				<button>Add</button>
+			</form>
+		</div>
+		<div>
+			<h1>Delete a team</h1>
+			<form class="delete-form" action="">
+				<label for="delete-team-name"
+					>The team name you would like to delete:</label
+				>
+				<input id="delete-team-name" type="text" required="" />
+				<button>Delete</button>
+			</form>
+		</div>
+		<div>
+			<h1>Update titles information of a team</h1>
+			<form class="update-form" action="">
+				<label for="update-team-name"
+					>The title of the team name you would like to update:</label
+				>
+				<input id="update-team-name" type="text" required="" />
+				<div><label for="update-titles">Titles:</label></div>
+				<textarea name="" id="update-titles" cols="80" rows="1"></textarea>
+				<button>Update</button>
 			</form>
 		</div>
 	</body>

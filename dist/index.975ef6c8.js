@@ -561,14 +561,13 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _snackbar = require("snackbar");
 var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
 (0, _snackbarDefault.default).duration = 3000;
-// this handles searching a team
-const form = document.querySelector(".form");
 const result = document.querySelector(".result");
-const reset = document.querySelector(".reset-btn");
-form.addEventListener("submit", (e)=>{
+// this handles searching for a team from api
+const searchForm = document.querySelector(".search-form");
+searchForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     result.textContent = "";
-    let teamName = document.querySelector("#team-name");
+    let teamName = document.querySelector("#search-team-name");
     let teamId;
     fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams").then((res)=>res.json()).then((data)=>{
         teamId = Number.parseInt(data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim()).id);
@@ -583,30 +582,78 @@ form.addEventListener("submit", (e)=>{
         (0, _snackbarDefault.default).show("No data for the team you are searching for!!!");
         teamName.value = "";
     });
-}); // fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
- // 	method: "post",
- // 	headers: { "content-type": "application/json" },
- // 	body: JSON.stringify({ name: "PSG", title: ["title1", "title2"] }),
- // })
- // 	.then((res) => res.json())
- // 	.then((data) => console.log(data));
- // fetch('https://64434a3e466f7c2b4b51171b.mockapi.io/teams').then(res => res.json()).then(data => {
- // 	teamName = data.find(team => {return team.name === 'Arsenal'}).name
- // 	teamTitles = data.find(team => {return team.name === 'Arsenal'}).titles
- // })
- // fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams/4", {
- // 	method: "delete",
- // })
- // 	.then((res) => res.json())
- // 	.then((data) => console.log(data));
- // fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams/1", {
- // 	method: "put",
- // 	headers: { "content-type": "application/json" },
- // 	body: JSON.stringify({ name: "Liverpool" }),
- // })
- // 	.then((res) => res.json())
- // 	.then((data) => console.log(data));
- // snackbar.show("No data for the team you are searching for!!!");
+});
+// this handles adding a team to api
+const addForm = document.querySelector(".add-form");
+addForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const teamName = document.querySelector("#add-team-name");
+    let titles = document.querySelector("#add-titles").value.split(",");
+    titles = titles.map((title)=>title.trim());
+    fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
+        method: "post",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            name: teamName.value,
+            titles: titles
+        })
+    }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+        teamName.value = "";
+        document.querySelector("#add-titles").value = "";
+    });
+});
+// this handles deleting a team from api
+const deleteForm = document.querySelector(".delete-form");
+deleteForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    let teamName = document.querySelector("#delete-team-name");
+    let teamId;
+    fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams").then((res)=>res.json()).then((data)=>{
+        teamId = Number.parseInt(data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim()).id);
+        fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams/${teamId}`, {
+            method: "delete"
+        }).then((res)=>res.json()).then((data)=>{
+            console.log(data);
+            teamName.value = "";
+        });
+    }).catch(()=>{
+        (0, _snackbarDefault.default).show("The team you want to delete doesn't exist in the database!!!");
+        teamName.value = "";
+    });
+});
+// this handles update a team's information from api
+const updateForm = document.querySelector(".update-form");
+updateForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    let teamName = document.querySelector("#update-team-name");
+    let teamId;
+    let titles = document.querySelector("#update-titles").value.split(",");
+    titles = titles.map((title)=>title.trim());
+    fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams").then((res)=>res.json()).then((data)=>{
+        teamId = Number.parseInt(data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim()).id);
+        console.log(teamId);
+        fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams/${teamId}`, {
+            method: "put",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                name: teamName.value,
+                titles: titles
+            })
+        }).then((res)=>res.json()).then((data)=>{
+            console.log(data);
+            teamName.value = "";
+            document.querySelector("#update-titles").value = "";
+        });
+    }).catch(()=>{
+        (0, _snackbarDefault.default).show("You can't update the team that doesn't exist!!!");
+        teamName.value = "";
+    });
+});
 
 },{"snackbar":"nwWOh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"nwWOh":[function(require,module,exports) {
 "use strict";
