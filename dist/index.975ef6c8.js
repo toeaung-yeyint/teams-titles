@@ -579,8 +579,8 @@ searchForm.addEventListener("submit", (e)=>{
             teamName.value = "";
         });
     }).catch(()=>{
-        (0, _snackbarDefault.default).show("No data for the team you are searching for!!!");
         teamName.value = "";
+        (0, _snackbarDefault.default).show("No data for the team you are searching for!!!");
     });
 });
 // this handles adding a team to api
@@ -590,19 +590,25 @@ addForm.addEventListener("submit", (e)=>{
     const teamName = document.querySelector("#add-team-name");
     let titles = document.querySelector("#add-titles").value.split(",");
     titles = titles.map((title)=>title.trim());
-    fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
-        method: "post",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify({
-            name: teamName.value,
-            titles: titles
-        })
-    }).then((res)=>res.json()).then((data)=>{
-        console.log(data);
-        teamName.value = "";
-        document.querySelector("#add-titles").value = "";
+    fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams").then((res)=>res.json()).then((data)=>{
+        if (data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim())) {
+            teamName.value = "";
+            document.querySelector("#add-titles").value = "";
+            (0, _snackbarDefault.default).show("The team already exists in the database!!!");
+        } else fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
+            method: "post",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                name: teamName.value.substring(0, 1).toUpperCase() + teamName.value.substring(1).toLowerCase(),
+                titles: titles
+            })
+        }).then((res)=>res.json()).then(()=>{
+            teamName.value = "";
+            document.querySelector("#add-titles").value = "";
+            (0, _snackbarDefault.default).show("You have added the team successfully!!!");
+        });
     });
 });
 // this handles deleting a team from api
@@ -615,13 +621,13 @@ deleteForm.addEventListener("submit", (e)=>{
         teamId = Number.parseInt(data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim()).id);
         fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams/${teamId}`, {
             method: "delete"
-        }).then((res)=>res.json()).then((data)=>{
-            console.log(data);
+        }).then((res)=>res.json()).then(()=>{
+            (0, _snackbarDefault.default).show("You have deleted the team successfully!!!");
             teamName.value = "";
         });
     }).catch(()=>{
-        (0, _snackbarDefault.default).show("The team you want to delete doesn't exist in the database!!!");
         teamName.value = "";
+        (0, _snackbarDefault.default).show("The team you want to delete doesn't exist in the database!!!");
     });
 });
 // this handles update a team's information from api
@@ -641,17 +647,16 @@ updateForm.addEventListener("submit", (e)=>{
                 "content-type": "application/json"
             },
             body: JSON.stringify({
-                name: teamName.value,
                 titles: titles
             })
-        }).then((res)=>res.json()).then((data)=>{
-            console.log(data);
+        }).then((res)=>res.json()).then(()=>{
             teamName.value = "";
             document.querySelector("#update-titles").value = "";
+            (0, _snackbarDefault.default).show("You have updated the team information succesfully!!!");
         });
     }).catch(()=>{
-        (0, _snackbarDefault.default).show("You can't update the team that doesn't exist!!!");
         teamName.value = "";
+        (0, _snackbarDefault.default).show("You can't update the team that doesn't exist!!!");
     });
 });
 
