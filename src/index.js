@@ -71,9 +71,7 @@ addForm.addEventListener("submit", (e) => {
 					method: "post",
 					headers: { "content-type": "application/json" },
 					body: JSON.stringify({
-						name:
-							teamName.value.substring(0, 1).toUpperCase() +
-							teamName.value.substring(1).toLowerCase(),
+						name: teamName.value,
 						titles: titles,
 					}),
 				})
