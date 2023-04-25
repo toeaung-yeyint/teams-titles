@@ -1,11 +1,12 @@
-Link to the app: https://toeaung-yeyint.github.io/teams-titles/dist/index.html
+**Link to the app:** https://toeaung-yeyint.github.io/teams-titles/dist/index.html
+<br/>
 
-**Project description**
+# Project description
 
 This app will let users view the UEFA Champions League winning history of top teams in Europe. Additionally, users can add a new team, remove existing teams as well as updating the winning history of teams.
 
 
-**Project specifications**
+## Project specifications
 
 - Users can search for a team to view its champion league winning history
 - If a user can click search button successfully, the search input field will be back to empty field
@@ -22,7 +23,7 @@ This app will let users view the UEFA Champions League winning history of top te
 - If a user updates a team history successfully, “You have updated the winning history of the team successfully.” will be returned
 - If a user updates a team that doesn’t exist in the database, “You can't update the team that doesn't exist.” will be returned
 
-**Credits:**
+### Credits:
 - Bootstrap (https://getbootstrap.com/)
 - MockAPI (https://mockapi.io)
 - Snackbar (https://github.com/andreruffert/snackbar)
