@@ -6,53 +6,204 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Project1</title>
 		<link rel="stylesheet" href="./src/style.css" />
-		<script type="module" src="./src/index.js" defer></script>
+		<script defer type="module" src="./src/index.js"></script>
 	</head>
 	<body>
-		<div>
-			<h1>Search a team</h1>
-			<form class="search-form" action="">
-				<label for="search-team-name"
-					>The team name you would like to search for:</label
-				>
-				<input id="search-team-name" type="text" required />
-				<button>Search</button>
-			</form>
-		</div>
-		<div>
-			<ul class="result"></ul>
-		</div>
-		<div>
-			<h1>Add a team</h1>
-			<form class="add-form" action="">
-				<label for="add-team-name">The team name you would like to add:</label>
-				<input id="add-team-name" type="text" required />
-				<div><label for="add-titles">Titles:</label></div>
-				<textarea name="" id="add-titles" cols="80" rows="1"></textarea>
-				<button>Add</button>
-			</form>
-		</div>
-		<div>
-			<h1>Delete a team</h1>
-			<form class="delete-form" action="">
-				<label for="delete-team-name"
-					>The team name you would like to delete:</label
-				>
-				<input id="delete-team-name" type="text" required />
-				<button>Delete</button>
-			</form>
-		</div>
-		<div>
-			<h1>Update titles information of a team</h1>
-			<form class="update-form" action="">
-				<label for="update-team-name"
-					>The title of the team name you would like to update:</label
-				>
-				<input id="update-team-name" type="text" required />
-				<div><label for="update-titles">Titles:</label></div>
-				<textarea name="" id="update-titles" cols="80" rows="1"></textarea>
-				<button>Update</button>
-			</form>
+		<div class="container">
+			<div class="row m-3">
+				<div class="col-lg-8 mx-auto">
+					<h1 class="text-center mb-5 fw-bolder text-uppercase">
+						teams-titles
+					</h1>
+					<p>
+						This app will let users view the titles history of the top teams in
+						Europe. Additionally, users can add a new team, remove existing
+						teams as well as comparing the titles between the teams.
+					</p>
+				</div>
+			</div>
+			<div class="row m-3 mb-5">
+				<div class="col-lg-8 mx-auto">
+					<div class="row">
+						<button
+							class="col-3 text-center border btn btn-primary feature-enabler"
+							type="button"
+							data-bs-target="#search-team"
+							data-bs-toggle="collapse"
+							id="search-team-button"
+						>
+							Search
+						</button>
+						<button
+							class="col text-center border btn btn-primary feature-enabler"
+							type="button"
+							data-bs-target="#add-team"
+							data-bs-toggle="collapse"
+							id="add-team-button"
+						>
+							Add
+						</button>
+						<button
+							class="col text-center border btn btn-primary feature-enabler"
+							type="button"
+							data-bs-target="#delete-team"
+							data-bs-toggle="collapse"
+							id="delete-team-button"
+						>
+							Delete
+						</button>
+						<button
+							class="col text-center border btn btn-primary feature-enabler"
+							type="button"
+							data-bs-target="#update-team"
+							data-bs-toggle="collapse"
+							id="update-team-button"
+						>
+							Update
+						</button>
+						<button
+							class="col-1 text-center border btn btn-danger"
+							type="button"
+							id="rest-team-button"
+						>
+							Reset
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="search-team" class="feature row m-3 collapse">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-left mb-3">Search a team</h2>
+					<form class="search-form my-4">
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="search-team-name"
+									>Team:</label
+								>
+							</div>
+							<div class="col-lg-11">
+								<input
+									class="form-control"
+									id="search-team-name"
+									type="text"
+									required
+								/>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-secondary col-12 my-3">
+							Search
+						</button>
+						<button type="button" class="rest-btn btn btn-danger col-12">
+							Reset
+						</button>
+					</form>
+					<ul class="result"></ul>
+				</div>
+			</div>
+			<div id="add-team" class="feature row m-3 collapse">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-left mb-3">Add a team</h2>
+					<form class="add-form my-4">
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="add-team-name">Team:</label>
+							</div>
+							<div class="col-lg-11">
+								<input
+									class="form-control"
+									id="add-team-name"
+									type="text"
+									required
+								/>
+							</div>
+						</div>
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="add-titles">Titles:</label>
+							</div>
+							<div class="col-lg-11">
+								<textarea
+									class="form-control"
+									name=""
+									id="add-titles"
+									cols="80"
+									rows="1"
+								></textarea>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-secondary px-4 col-12">
+							Add
+						</button>
+					</form>
+				</div>
+			</div>
+			<div id="delete-team" class="feature row m-3 collapse">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-left mb-3">Delete a team</h2>
+					<form class="delete-form my-4">
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="delete-team-name"
+									>Team:</label
+								>
+							</div>
+							<div class="col-lg-11">
+								<input
+									class="form-control"
+									id="delete-team-name"
+									type="text"
+									required
+								/>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-secondary px-4 col-12">
+							Delete
+						</button>
+					</form>
+				</div>
+			</div>
+			<div id="update-team" class="feature row m-3 collapse">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="text-left mb-3">Update titles information of a team</h2>
+					<form class="update-form my-4">
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="update-team-name"
+									>Team:</label
+								>
+							</div>
+							<div class="col-lg-11">
+								<input
+									class="form-control"
+									id="update-team-name"
+									type="text"
+									required
+								/>
+							</div>
+						</div>
+						<div class="row my-3">
+							<div class="col-lg-1">
+								<label class="col-form-label" for="update-titles"
+									>Titles:</label
+								>
+							</div>
+							<div class="col-lg-11">
+								<textarea
+									class="form-control"
+									name=""
+									id="update-titles"
+									cols="80"
+									rows="1"
+								></textarea>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-secondary px-4 col-12">
+							Update
+						</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
