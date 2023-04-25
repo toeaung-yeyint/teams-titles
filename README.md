@@ -2,6 +2,7 @@ Project description
 
 This app will let users view the UEFA Champions League winning history of top teams in Europe. Additionally, users can add a new team, remove existing teams as well as updating the winning history of teams.
 
+
 Project specifications
 
 - Users can search for a team to view its champion league winning history
