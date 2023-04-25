@@ -560,7 +560,6 @@ function hmrAccept(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _snackbar = require("snackbar");
 var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
-// import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 (0, _snackbarDefault.default).duration = 3000;
 const result = document.querySelector(".result");
 // this handles searching for a team from api
@@ -581,10 +580,11 @@ searchForm.addEventListener("submit", (e)=>{
         });
     }).catch(()=>{
         teamName.value = "";
+        document.querySelector("#search-team div").append(document.querySelector(".snackbar"));
         (0, _snackbarDefault.default).show("No data for the team you are searching for!!!");
     });
 });
-// this handles the rest button
+// this handles search rest button
 const restButton = document.querySelector(".rest-btn");
 restButton.addEventListener("click", ()=>{
     result.textContent = "";
@@ -600,6 +600,7 @@ addForm.addEventListener("submit", (e)=>{
         if (data.find((team)=>team.name.toLowerCase() === teamName.value.toLowerCase().trim())) {
             teamName.value = "";
             document.querySelector("#add-titles").value = "";
+            document.querySelector("#add-team div").append(document.querySelector(".snackbar"));
             (0, _snackbarDefault.default).show("The team already exists in the database!!!");
         } else fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
             method: "post",
@@ -613,6 +614,7 @@ addForm.addEventListener("submit", (e)=>{
         }).then((res)=>res.json()).then(()=>{
             teamName.value = "";
             document.querySelector("#add-titles").value = "";
+            document.querySelector("#add-team div").append(document.querySelector(".snackbar"));
             (0, _snackbarDefault.default).show("You have added the team successfully!!!");
         });
     });
@@ -628,11 +630,13 @@ deleteForm.addEventListener("submit", (e)=>{
         fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams/${teamId}`, {
             method: "delete"
         }).then((res)=>res.json()).then(()=>{
+            document.querySelector("#delete-team div").append(document.querySelector(".snackbar"));
             (0, _snackbarDefault.default).show("You have deleted the team successfully!!!");
             teamName.value = "";
         });
     }).catch(()=>{
         teamName.value = "";
+        document.querySelector("#delete-team div").append(document.querySelector(".snackbar"));
         (0, _snackbarDefault.default).show("The team you want to delete doesn't exist in the database!!!");
     });
 });
@@ -658,63 +662,37 @@ updateForm.addEventListener("submit", (e)=>{
         }).then((res)=>res.json()).then(()=>{
             teamName.value = "";
             document.querySelector("#update-titles").value = "";
+            document.querySelector("#update-team div").append(document.querySelector(".snackbar"));
             (0, _snackbarDefault.default).show("You have updated the team information succesfully!!!");
         });
     }).catch(()=>{
         teamName.value = "";
+        document.querySelector("#update-team div").append(document.querySelector(".snackbar"));
         (0, _snackbarDefault.default).show("You can't update the team that doesn't exist!!!");
     });
 });
-// this handles the menu buttons
-const featuresEnablers = Array.from(document.querySelectorAll(".feature-enabler"));
+// this handles the menu buttons including menu reset button
 const features = Array.from(document.querySelectorAll(".feature"));
-const searchTeamButton = document.querySelector("#search-team-button");
-const addTeamButton = document.querySelector("#add-team-button");
-const deleteTeamButton = document.querySelector("#delete-team-button");
-const updateTeamButton = document.querySelector("#update-team-button");
 const restTeamButton = document.querySelector("#rest-team-button");
-searchTeamButton.addEventListener("click", ()=>{
-    featuresEnablers.forEach((feature)=>{
-        feature.classList.remove("active");
+const featureButtons = Array.from(document.querySelectorAll(".feature-enabler"));
+featureButtons.forEach((featureButton)=>{
+    featureButton.addEventListener("click", ()=>{
+        featureButtons.forEach((feature)=>{
+            feature.classList.remove("active");
+        });
+        features.forEach((feature)=>{
+            feature.classList.remove("show");
+        });
+        result.textContent = "";
+        featureButton.classList.add("active");
+        if (featureButton.id === "search-team-button") document.querySelector("#search-team").classList.add("show");
+        else if (featureButton.id === "add-team-button") document.querySelector("#add-team").classList.add("show");
+        else if (featureButton.id === "delete-team-button") document.querySelector("#delete-team").classList.add("show");
+        else if (featureButton.id === "update-team-button") document.querySelector("#update-team").classList.add("show");
     });
-    features.forEach((feature)=>{
-        feature.classList.remove("show");
-    });
-    searchTeamButton.classList.add("active");
-    document.querySelector("#search-team").classList.add("show");
-});
-addTeamButton.addEventListener("click", ()=>{
-    featuresEnablers.forEach((feature)=>{
-        feature.classList.remove("active");
-    });
-    features.forEach((feature)=>{
-        feature.classList.remove("show");
-    });
-    addTeamButton.classList.add("active");
-    document.querySelector("#add-team").classList.add("show");
-});
-deleteTeamButton.addEventListener("click", ()=>{
-    featuresEnablers.forEach((feature)=>{
-        feature.classList.remove("active");
-    });
-    features.forEach((feature)=>{
-        feature.classList.remove("show");
-    });
-    deleteTeamButton.classList.add("active");
-    document.querySelector("#delete-team").classList.add("show");
-});
-updateTeamButton.addEventListener("click", ()=>{
-    featuresEnablers.forEach((feature)=>{
-        feature.classList.remove("active");
-    });
-    features.forEach((feature)=>{
-        feature.classList.remove("show");
-    });
-    updateTeamButton.classList.add("active");
-    document.querySelector("#update-team").classList.add("show");
 });
 restTeamButton.addEventListener("click", ()=>{
-    featuresEnablers.forEach((feature)=>{
+    featureButtons.forEach((feature)=>{
         feature.classList.remove("active");
     });
     features.forEach((feature)=>{
