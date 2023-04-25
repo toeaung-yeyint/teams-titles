@@ -23,6 +23,6 @@ Project specifications
 - If a user updates a team that doesn’t exist in the database, “You can't update the team that doesn't exist.” will be returned
 
 Credits:
-Bootstrap (https://getbootstrap.com/)
-MockAPI (https://mockapi.io)
-Snackbar (https://github.com/andreruffert/snackbar)
+- Bootstrap (https://getbootstrap.com/)
+- MockAPI (https://mockapi.io)
+- Snackbar (https://github.com/andreruffert/snackbar)
