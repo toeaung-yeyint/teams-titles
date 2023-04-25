@@ -34,7 +34,7 @@ searchForm.addEventListener("submit", (e) => {
 			document
 				.querySelector("#search-team div")
 				.append(document.querySelector(".snackbar"));
-			snackbar.show("No data for the team you are searching for!!!");
+			snackbar.show("No data for the team you are searching for.");
 		});
 });
 
@@ -65,7 +65,7 @@ addForm.addEventListener("submit", (e) => {
 				document
 					.querySelector("#add-team div")
 					.append(document.querySelector(".snackbar"));
-				snackbar.show("The team already exists in the database!!!");
+				snackbar.show("The team already exists in the database.");
 			} else {
 				fetch("https://64434a3e466f7c2b4b51171b.mockapi.io/teams", {
 					method: "post",
@@ -84,7 +84,7 @@ addForm.addEventListener("submit", (e) => {
 						document
 							.querySelector("#add-team div")
 							.append(document.querySelector(".snackbar"));
-						snackbar.show("You have added the team successfully!!!");
+						snackbar.show("You have added the team successfully.");
 					});
 			}
 		});
@@ -113,7 +113,7 @@ deleteForm.addEventListener("submit", (e) => {
 					document
 						.querySelector("#delete-team div")
 						.append(document.querySelector(".snackbar"));
-					snackbar.show("You have deleted the team successfully!!!");
+					snackbar.show("You have deleted the team successfully.");
 					teamName.value = "";
 				});
 		})
@@ -123,7 +123,7 @@ deleteForm.addEventListener("submit", (e) => {
 				.querySelector("#delete-team div")
 				.append(document.querySelector(".snackbar"));
 			snackbar.show(
-				"The team you want to delete doesn't exist in the database!!!"
+				"The team you want to delete doesn't exist in the database."
 			);
 		});
 });
@@ -158,7 +158,9 @@ updateForm.addEventListener("submit", (e) => {
 					document
 						.querySelector("#update-team div")
 						.append(document.querySelector(".snackbar"));
-					snackbar.show("You have updated the team information succesfully!!!");
+					snackbar.show(
+						"You have updated the winning history of the team successfully."
+					);
 				});
 		})
 		.catch(() => {
@@ -166,7 +168,7 @@ updateForm.addEventListener("submit", (e) => {
 			document
 				.querySelector("#update-team div")
 				.append(document.querySelector(".snackbar"));
-			snackbar.show("You can't update the team that doesn't exist!!!");
+			snackbar.show("You can't update the team that doesn't exist.");
 		});
 });
 
