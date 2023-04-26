@@ -3,7 +3,7 @@
 
 # Project description
 
-This app will let users view the UEFA Champions League winning history of top teams (Real Marid, Barcelona, Manchester United, Chelsea, Liverpool, Bayern Munich, AC Milan, Inter Milan, Juventus, Ajax) in Europe. Additionally, users can add a new team, remove existing teams as well as updating the winning history of teams.
+This app will let users view the UEFA Champions League winning history of top teams (Real Madrid, Barcelona, Manchester United, Chelsea, Liverpool, Bayern Munich, AC Milan, Inter Milan, Juventus, Ajax) in Europe. Additionally, users can add a new team, remove existing teams as well as updating the winning history of teams.
 
 
 ## Project specifications
