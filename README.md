@@ -25,7 +25,6 @@ This app will let users view the UEFA Champions League winning history of top te
 
 ### Tools used & Credits:
 - Vanilla JavaScript
-- SCSS
 - Bootstrap (https://getbootstrap.com/)
 - Parcel (https://parceljs.org/)
 - MockAPI (https://mockapi.io)
