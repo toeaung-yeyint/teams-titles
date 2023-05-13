@@ -23,7 +23,7 @@ This app will let users view the UEFA Champions League winning history of top te
 - If a user updates a team history successfully, “You have updated the winning history of the team successfully.” will be returned
 - If a user updates a team that doesn’t exist in the database, “You can't update the team that doesn't exist.” will be returned
 
-### Tools used & Credits:
+### Tools used & credits:
 - Vanilla JavaScript
 - Bootstrap (https://getbootstrap.com/)
 - Parcel (https://parceljs.org/)
