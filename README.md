@@ -5,7 +5,6 @@
 
 This app allows users to view the winning history of top European football teams in the UEFA Champions League. Users can access the Champions League winning history of teams such as Real Madrid, Barcelona, Manchester United, Chelsea, Liverpool, Bayern Munich, AC Milan, Inter Milan, Juventus, and Ajax. Additionally, the system provides functionality for users to add new teams, remove existing teams, and update the winning history of teams.
 
-
 ## Project specifications
 
 - Users can search for a team to view its champion league winning history
@@ -24,6 +23,9 @@ This app allows users to view the winning history of top European football teams
 - If a user updates a team that doesn’t exist in the database, “You can't update the team that doesn't exist.” will be returned
 
 ### Tools used & credits:
+
+- HTML
+- CSS
 - Vanilla JavaScript
 - Bootstrap (https://getbootstrap.com/)
 - Parcel (https://parceljs.org/)
