@@ -26,8 +26,8 @@ This app allows users to view the winning history of top European football teams
 
 - HTML
 - CSS
-- Vanilla JavaScript
 - Bootstrap (https://getbootstrap.com/)
-- Parcel (https://parceljs.org/)
-- MockAPI (https://mockapi.io)
+- Vanilla JavaScript
 - Snackbar (https://github.com/andreruffert/snackbar)
+- MockAPI (https://mockapi.io)
+- Parcel (https://parceljs.org/)
