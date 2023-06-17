@@ -2,7 +2,7 @@
 	<div class="app-result">
 		<img :src="src" alt="" />
 		<h2>{{ name }}</h2>
-		<div>Winning Year:</div>
+		<div>Winning Years:</div>
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
 			{{ year }}
 		</div>
