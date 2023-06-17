@@ -1,7 +1,0 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
-@import "../node_modules/snackbar/dist/snackbar.css";
-
-.snackbar {
-	position: static;
-	width: 100%;
-}

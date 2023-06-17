@@ -1,19 +1,18 @@
 {
-	"name": "toeaung-yeyint.github.io",
-	"version": "1.0.0",
-	"description": "",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@parcel/transformer-sass": "^2.8.3",
-		"parcel": "^2.8.3"
-	},
-	"dependencies": {
-		"bootstrap": "^5.3.0-alpha3",
-		"snackbar": "^1.1.0"
-	}
+  "name": "teams-titles",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "vite": "^4.3.2"
+  }
 }
