@@ -20,22 +20,6 @@ export default {
 			this.$emit("showResult", this.teamName);
 			this.teamName = "";
 		},
-		// handleSearch() {
-		// 	fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams`)
-		// 		.then((res) => res.json())
-		// 		.then((data) => {
-		// 			this.team = data.find((team) => {
-		// 				return team.name.toLowerCase() === this.teamName.toLowerCase();
-		// 			});
-		// 			if (this.team) {
-		// 				this.$emit("display", this.team);
-		// 				this.teamName = "";
-		// 			} else {
-		// 				this.$emit("hide");
-		// 				console.log("The team doesn't exist");
-		// 			}
-		// 		});
-		// },
 	},
 };
 </script>

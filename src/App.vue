@@ -14,19 +14,27 @@
 			history of teams.
 		</p>
 		<div class="app-functions">
-			<SearchBar @showResult="filter" />
+			<SearchBar ref="searchBar" @showResult="filter" />
 			<AppButton label="add a new team" />
-			<AppButton label="rest" type="reset" @click="reset" />
+			<AppButton label="reset" type="reset" @click="reset" />
 		</div>
-		<div v-if="showAll">
-			<div v-for="(team, index) in allTeams" :key="index">
-				<Teams :src="team.logo" :name="team.name" :titles="team.titles" />
-			</div>
+		<div v-if="showAll" class="all-teams">
+			<Teams
+				v-for="(team, index) in allTeams"
+				:key="index"
+				:src="team.logo"
+				:name="team.name"
+				:years="team.years"
+			/>
 		</div>
-		<div v-if="showOnlyFiltered">
-			<div v-for="(team, index) in filteredTeam" :key="index">
-				<Teams :src="team.logo" :name="team.name" :titles="team.titles" />
-			</div>
+		<div v-if="showOnlyFiltered" class="filtered-team">
+			<Teams
+				v-for="(team, index) in filteredTeam"
+				:key="index"
+				:src="team.logo"
+				:name="team.name"
+				:years="team.years"
+			/>
 		</div>
 	</div>
 </template>
@@ -44,7 +52,7 @@ export default {
 			showAll: true,
 			src: null,
 			name: null,
-			titles: null,
+			years: null,
 			result: false,
 			filteredTeam: [],
 			showOnlyFiltered: false,
@@ -76,6 +84,7 @@ export default {
 		reset() {
 			this.showOnlyFiltered = false;
 			this.filteredTeam = [];
+			this.$refs.searchBar.$data.teamName = "";
 			this.showAll = true;
 		},
 	},
@@ -106,5 +115,13 @@ h1 {
 }
 .error-message {
 	margin-top: 50px;
+}
+.all-teams,
+.filtered-team {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 70px;
+	column-gap: 30px;
+	row-gap: 80px;
 }
 </style>
