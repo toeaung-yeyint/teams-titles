@@ -1,10 +1,7 @@
 <template>
 	<div class="container">
 		<h1>teams-titles</h1>
-		<p>
-			<strong>Built using:</strong> HTML, CSS, Bootstrap, vanilla JavaScript,
-			Snackbar.js, MockAPI, Parcel
-		</p>
+		<p><strong>Built using:</strong> Vue 3, HTML5, CSS,MockAPI, Vite</p>
 		<p>
 			This app allows users to view the winning history of top European football
 			teams in the UEFA Champions League. Users can access the Champions League
@@ -64,6 +61,7 @@ export default {
 	methods: {
 		filter(data) {
 			this.showAll = false;
+			this.errorMessage = false;
 			this.filteredTeam = this.allTeams.filter(
 				(team) => team.name.toLowerCase() === data.trim().toLowerCase()
 			);
@@ -91,8 +89,9 @@ h1 {
 	text-transform: uppercase;
 }
 .container {
-	max-width: 800px;
+	max-width: 1000px;
 	margin: 100px auto;
+	padding: 20px;
 }
 .app-functions {
 	display: flex;
