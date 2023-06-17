@@ -1,7 +1,9 @@
 <template>
 	<div class="container">
 		<h1>teams-titles</h1>
-		<p><strong>Built using:</strong> Vue 3, HTML5, CSS,MockAPI, Vite</p>
+		<p>
+			<strong>Built using:</strong> Vue, HTML, CSS, Snackbar.js, MockAPI, Vite
+		</p>
 		<p>
 			This app allows users to view the winning history of top European football
 			teams in the UEFA Champions League. Users can access the Champions League
@@ -21,9 +23,6 @@
 				<Teams :src="team.logo" :name="team.name" :titles="team.titles" />
 			</div>
 		</div>
-		<h3 v-if="errorMessage" class="error-message">
-			The team you are looking for doesn't exist in the database yet.
-		</h3>
 		<div v-if="showOnlyFiltered">
 			<div v-for="(team, index) in filteredTeam" :key="index">
 				<Teams :src="team.logo" :name="team.name" :titles="team.titles" />
@@ -36,6 +35,7 @@
 import AppButton from "./components/AppButton.vue";
 import Teams from "./components/Teams.vue";
 import SearchBar from "./components/SearchBar.vue";
+import snackbar from "snackbar";
 export default {
 	components: { AppButton, Teams, SearchBar },
 	data() {
@@ -48,7 +48,6 @@ export default {
 			result: false,
 			filteredTeam: [],
 			showOnlyFiltered: false,
-			errorMessage: false,
 		};
 	},
 	created() {
@@ -60,22 +59,23 @@ export default {
 	},
 	methods: {
 		filter(data) {
-			this.showAll = false;
-			this.errorMessage = false;
 			this.filteredTeam = this.allTeams.filter(
 				(team) => team.name.toLowerCase() === data.trim().toLowerCase()
 			);
 			console.log(this.filteredTeam.length);
 			if (this.filteredTeam.length > 0) {
+				this.showAll = false;
 				this.showOnlyFiltered = true;
 			} else {
-				this.errorMessage = true;
+				this.showAll = true;
+				snackbar.show(
+					"The team you are looking for doesn't exist in the database yet."
+				);
 			}
 		},
 		reset() {
 			this.showOnlyFiltered = false;
 			this.filteredTeam = [];
-			this.errorMessage = false;
 			this.showAll = true;
 		},
 	},
