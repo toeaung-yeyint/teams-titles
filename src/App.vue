@@ -94,7 +94,7 @@ h1 {
 	grid-template-columns: repeat(1, 1fr);
 	margin-top: 70px;
 	column-gap: 30px;
-	row-gap: 80px;
+	row-gap: 50px;
 }
 @media screen and (min-width: 601px) {
 	.app-functions {
