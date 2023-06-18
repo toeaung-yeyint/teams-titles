@@ -14,20 +14,11 @@
 			history of teams.
 		</p>
 		<div class="app-functions">
-			<SearchBar ref="searchBar" @showResult="filter" />
+			<SearchBar ref="searchBar" @update="handleTeamName" />
 			<AppButton label="add a new team" />
 			<AppButton label="reset" type="reset" @click="reset" />
 		</div>
 		<div v-if="showAll" class="all-teams">
-			<Teams
-				v-for="(team, index) in allTeams"
-				:key="index"
-				:src="team.logo"
-				:name="team.name"
-				:years="team.years"
-			/>
-		</div>
-		<div v-if="showOnlyFiltered" class="filtered-team">
 			<Teams
 				v-for="(team, index) in filteredTeam"
 				:key="index"
@@ -43,7 +34,6 @@
 import AppButton from "./components/AppButton.vue";
 import Teams from "./components/Teams.vue";
 import SearchBar from "./components/SearchBar.vue";
-import snackbar from "snackbar";
 export default {
 	components: { AppButton, Teams, SearchBar },
 	data() {
@@ -54,11 +44,10 @@ export default {
 			name: null,
 			years: null,
 			result: false,
-			filteredTeam: [],
-			showOnlyFiltered: false,
+			teamName: "",
 		};
 	},
-	created() {
+	beforeMount() {
 		fetch(`https://64434a3e466f7c2b4b51171b.mockapi.io/teams`)
 			.then((res) => res.json())
 			.then((data) => {
@@ -66,26 +55,19 @@ export default {
 			});
 	},
 	methods: {
-		filter(data) {
-			this.filteredTeam = this.allTeams.filter(
-				(team) => team.name.toLowerCase() === data.trim().toLowerCase()
-			);
-			console.log(this.filteredTeam.length);
-			if (this.filteredTeam.length > 0) {
-				this.showAll = false;
-				this.showOnlyFiltered = true;
-			} else {
-				this.showAll = true;
-				snackbar.show(
-					"The team you are looking for doesn't exist in the database yet."
-				);
-			}
-		},
 		reset() {
-			this.showOnlyFiltered = false;
-			this.filteredTeam = [];
 			this.$refs.searchBar.$data.teamName = "";
 			this.showAll = true;
+		},
+		handleTeamName(data) {
+			this.teamName = data;
+		},
+	},
+	computed: {
+		filteredTeam() {
+			return this.allTeams.filter((team) =>
+				team.name.toLowerCase().includes(this.teamName.toLowerCase())
+			);
 		},
 	},
 };

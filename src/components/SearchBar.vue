@@ -1,9 +1,13 @@
 <template>
-	<form @submit.prevent="handleSearch">
-		<input type="text" placeholder="Search..." v-model="teamName" required />
-		<button type="submit">
-			<i class="fa-solid fa-magnifying-glass"></i>
-		</button>
+	<form>
+		<input
+			type="text"
+			placeholder="Search..."
+			required
+			v-model="teamName"
+			@input="updateTeamName"
+		/>
+		<i class="fa-solid fa-magnifying-glass"></i>
 	</form>
 </template>
 
@@ -12,13 +16,11 @@ export default {
 	data() {
 		return {
 			teamName: "",
-			team: null,
 		};
 	},
 	methods: {
-		handleSearch() {
-			this.$emit("showResult", this.teamName);
-			this.teamName = "";
+		updateTeamName() {
+			this.$emit("update", this.teamName);
 		},
 	},
 };
@@ -30,14 +32,20 @@ form {
 	border: 1px solid #404040;
 	flex-grow: 1;
 	box-sizing: border-box;
+	align-items: center;
 }
 form input {
 	flex-grow: 1;
 	outline: 0;
 	border: 0;
-	padding: 0 20px;
+	padding-left: 20px;
+}
+form i {
+	font-size: 1.2rem;
+	padding: 0 10px;
+	color: #404040;
 }
 form:focus-within {
-	outline: 2px solid black;
+	outline: 4px solid rgba(100, 116, 139, 0.5);
 }
 </style>

@@ -10,7 +10,7 @@ export default {
 
 <style scroped>
 button {
-	background: #404040;
+	background: #475569;
 	outline: 0;
 	border: 0;
 	color: white;
@@ -22,7 +22,7 @@ button:hover {
 	background: black;
 }
 .reset {
-	background: #ef4444;
+	background: #f87171;
 }
 .reset:hover {
 	background: red;
