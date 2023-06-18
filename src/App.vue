@@ -66,7 +66,7 @@ export default {
 	computed: {
 		filteredTeam() {
 			return this.allTeams.filter((team) =>
-				team.name.toLowerCase().includes(this.teamName.toLowerCase())
+				team.name.toLowerCase().includes(this.teamName.trim().toLowerCase())
 			);
 		},
 	},
