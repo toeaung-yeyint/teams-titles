@@ -18,8 +18,8 @@
 			<AppButton label="add a new team" />
 			<AppButton label="reset" type="reset" @click="reset" />
 		</div>
-		<div v-if="showAll" class="all-teams">
-			<Teams
+		<div class="all-teams">
+			<Team
 				v-for="(team, index) in filteredTeam"
 				:key="index"
 				:src="team.logo"
@@ -32,14 +32,13 @@
 
 <script>
 import AppButton from "./components/AppButton.vue";
-import Teams from "./components/Teams.vue";
+import Team from "./components/Team.vue";
 import SearchBar from "./components/SearchBar.vue";
 export default {
-	components: { AppButton, Teams, SearchBar },
+	components: { AppButton, Team, SearchBar },
 	data() {
 		return {
 			allTeams: [],
-			showAll: true,
 			src: null,
 			name: null,
 			years: null,
@@ -57,7 +56,7 @@ export default {
 	methods: {
 		reset() {
 			this.$refs.searchBar.$data.teamName = "";
-			this.showAll = true;
+			this.teamName = "";
 		},
 		handleTeamName(data) {
 			this.teamName = data;
@@ -90,20 +89,24 @@ h1 {
 	gap: 10px;
 	margin-top: 80px;
 }
-@media screen and (min-width: 801px) {
-	.app-functions {
-		flex-direction: row;
-	}
-}
-.error-message {
-	margin-top: 50px;
-}
-.all-teams,
-.filtered-team {
+.all-teams {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	margin-top: 70px;
 	column-gap: 30px;
 	row-gap: 80px;
+}
+@media screen and (min-width: 601px) {
+	.app-functions {
+		flex-direction: row;
+	}
+	.all-teams {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (min-width: 801px) {
+	.all-teams {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 </style>

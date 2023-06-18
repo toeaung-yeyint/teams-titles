@@ -38,11 +38,12 @@ form input {
 	flex-grow: 1;
 	outline: 0;
 	border: 0;
+	width: 200px;
 	padding-left: 20px;
 }
 form i {
 	font-size: 1.2rem;
-	padding: 0 10px;
+	padding: 5px 10px;
 	color: #404040;
 }
 form:focus-within {
