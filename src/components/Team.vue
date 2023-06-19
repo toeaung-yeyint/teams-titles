@@ -11,10 +11,10 @@
 
 <script>
 export default {
-	props: ["src", "name", "years"],
+	props: ["src", "name", "winningYears"],
 	computed: {
 		sortedYears() {
-			return this.years.sort((a, b) => {
+			return this.winningYears.sort((a, b) => {
 				return Number.parseInt(a) - Number.parseInt(b);
 			});
 		},
