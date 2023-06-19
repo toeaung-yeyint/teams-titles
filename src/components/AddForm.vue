@@ -3,12 +3,12 @@
   <form @submit.prevent>
     <div>
       <input id="name" type="text" required placeholder=" " /><label for="name"
-        >Team name:</label
+        >Name:</label
       >
     </div>
     <div>
       <input type="text" id="logo" required placeholder=" " />
-      <label for="logo">Team logo url:</label>
+      <label for="logo">Logo (url):</label>
     </div>
     <div>
       <input
@@ -19,7 +19,7 @@
         required
         placeholder=" "
       />
-      <label for="years">Winning years:</label>
+      <label for="years">Winning Years:</label>
     </div>
     <Button label="add" />
   </form>
