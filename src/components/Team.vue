@@ -35,7 +35,6 @@ export default {
 	margin: 10px 10px 0 0;
 }
 .app-result img {
-	background-color: white;
 	width: 100%;
 	max-height: 160px;
 	object-fit: contain;
