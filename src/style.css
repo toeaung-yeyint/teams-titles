@@ -1,3 +1,5 @@
+@import "../node_modules/snackbar/dist/snackbar.css";
+
 body {
 	overflow-y: scroll;
 }

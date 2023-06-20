@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "firebase": "^9.22.2",
+    "snackbar": "^1.1.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
