@@ -35,9 +35,8 @@ export default {
 	margin: 10px 10px 0 0;
 }
 .app-result img {
-	background-color: #f5f5f5;
+	background-color: white;
 	width: 100%;
-	height: 180px;
 	object-fit: contain;
 	margin-bottom: 20px;
 }
