@@ -46,9 +46,6 @@ export default {
   },
   methods: {
     async addTeam() {
-      this.name =
-        this.name.trim().substring(0, 1).toUpperCase() +
-        this.name.trim().substring(1).toLowerCase();
       this.winningYears = this.winningYears.split(", ");
       this.winningYears = this.winningYears.map((year) =>
         Number.parseInt(year)
