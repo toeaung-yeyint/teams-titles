@@ -2,15 +2,17 @@
 	<h2>Add a new team</h2>
 	<form @submit.prevent="addTeam" ref="addFrom">
 		<div class="input-field">
+			<label for="name">Name:</label>
 			<input
 				v-model="name"
 				id="name"
 				type="text"
 				required
-				placeholder=" "
-			/><label for="name">Name:</label>
+				placeholder="e.g. Real Madrid"
+			/>
 		</div>
 		<div class="input-field">
+			<label for="winningYears">Winning Years:</label>
 			<input
 				v-model="winningYears"
 				id="winningYears"
@@ -18,9 +20,8 @@
 				pattern="\d{4}(,\s\d{4})*"
 				title="e.g. 2022, 2023"
 				required
-				placeholder=" "
+				placeholder="e.g. 2022, 2023"
 			/>
-			<label for="winningYears">Winning Years:</label>
 		</div>
 		<div class="input-field-logo">
 			<label for="logo">Logo:</label>
@@ -89,7 +90,6 @@ h2 {
 	margin: 0 0 30px 0;
 }
 .input-field {
-	position: relative;
 	margin-bottom: 30px;
 }
 .input-field-logo {
@@ -97,15 +97,10 @@ h2 {
 	align-items: center;
 	margin: 40px 0;
 }
-label[for="name"],
-label[for="winningYears"] {
-	position: absolute;
-	top: 10px;
-	left: 0px;
-	transition: all 0.5s ease-in-out;
+label {
 	padding: 0 5px;
-	pointer-events: none;
 	color: #505050;
+	display: inline;
 }
 input#name,
 input#winningYears {
@@ -122,18 +117,8 @@ input#name:focus,
 input#winningYears:focus {
 	border-bottom: 2px solid black;
 }
-input:focus + label[for="name"],
-input:not(:placeholder-shown) + label[for="name"],
-input:focus + label[for="winningYears"],
-input:not(:placeholder-shown) + label[for="winningYears"] {
-	top: -12px;
-}
 Button {
 	width: 100%;
-}
-label[for="logo"] {
-	margin: 0 10px;
-	color: #505050;
 }
 i {
 	position: absolute;
