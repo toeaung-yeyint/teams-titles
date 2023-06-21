@@ -1,10 +1,20 @@
 <template>
-  <button :class="{ reset: type === 'reset' }">{{ label }}</button>
+  <button :class="buttonClasses">
+    {{ label }}
+  </button>
 </template>
 
 <script>
 export default {
   props: ["label", "type"],
+  computed: {
+    buttonClasses() {
+      return {
+        reset: this.type === "reset",
+        cancel: this.type === "cancel",
+      };
+    },
+  },
 };
 </script>
 
@@ -26,5 +36,13 @@ button:hover {
 }
 .reset:hover {
   background: red;
+}
+.cancel {
+  border: 1px solid black;
+  color: #404040;
+  background: white;
+}
+.cancel:hover {
+  background: #f5f5f5;
 }
 </style>

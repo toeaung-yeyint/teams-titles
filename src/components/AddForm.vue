@@ -27,6 +27,7 @@
       <input ref="inputFile" type="file" accept=".webp" id="logo" required />
     </div>
     <Button label="add" />
+    <i class="fa-solid fa-xmark" @click="handleClose"></i>
   </form>
 </template>
 
@@ -37,7 +38,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   components: { Button },
-  emits: ["close"],
+  emits: ["add", "close"],
   data() {
     return {
       name: null,
@@ -68,6 +69,9 @@ export default {
       this.name = "";
       this.winningYears = "";
       this.$refs.addFrom.reset();
+      this.$emit("add");
+    },
+    handleClose() {
       this.$emit("close");
     },
   },
@@ -127,5 +131,13 @@ Button {
 label[for="logo"] {
   margin: 0 10px;
   color: #505050;
+}
+i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: red;
 }
 </style>

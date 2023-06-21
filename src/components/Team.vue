@@ -13,6 +13,7 @@
 <script>
 export default {
   props: ["src", "name", "winningYears"],
+  emits: ["delete"],
   computed: {
     sortedYears() {
       return this.winningYears.sort((a, b) => {

@@ -20,7 +20,7 @@
     </div>
     <div class="all-teams">
       <Team
-        @delete="confirmation"
+        @delete="askConfirm"
         v-for="(team, index) in filteredTeam"
         :key="index"
         :src="team.logo"
@@ -28,7 +28,9 @@
         :winningYears="team.winningYears"
       />
     </div>
-    <Modal ref="addForm"><AddForm @close="closeAddFrom" /></Modal>
+    <Modal ref="addForm"
+      ><AddForm @add="closeAddFrom" @close="closeModal"
+    /></Modal>
     <Modal ref="deleteModal"><ConfirmDelete @cancel="cancelDelete" /></Modal>
   </div>
 </template>
@@ -82,7 +84,10 @@ export default {
       this.$refs.addForm.$el.close();
       snackbar.show("The team has been added successfully!");
     },
-    confirmation() {
+    closeModal() {
+      this.$refs.addForm.$el.close();
+    },
+    askConfirm() {
       this.$refs.deleteModal.$el.showModal();
     },
     cancelDelete() {

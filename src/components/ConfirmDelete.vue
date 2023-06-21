@@ -2,7 +2,7 @@
   <h2>Please confirm to delete the team.</h2>
   <div class="buttons">
     <Button label="Confirm" />
-    <Button label="Cancel" @click="handleCancel" />
+    <Button label="Cancel" @click="handleCancel" type="cancel" />
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import Button from "./Button.vue";
 export default {
   components: { Button },
+  emits: ["cancel"],
   methods: {
     handleCancel() {
       this.$emit("cancel");
