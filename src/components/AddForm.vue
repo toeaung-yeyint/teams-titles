@@ -129,5 +129,6 @@ Button {
 }
 label[for="logo"] {
   margin: 0 10px;
+  color: #505050;
 }
 </style>
