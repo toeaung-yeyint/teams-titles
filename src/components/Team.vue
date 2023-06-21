@@ -6,6 +6,7 @@
     <div class="year" v-for="(year, index) in sortedYears" :key="index">
       {{ year }}
     </div>
+    <i class="fa-solid fa-xmark" @click="handleDelete"></i>
   </div>
 </template>
 
@@ -19,6 +20,11 @@ export default {
       });
     },
   },
+  methods: {
+    handleDelete() {
+      this.$emit("delete");
+    },
+  },
 };
 </script>
 
@@ -29,6 +35,7 @@ export default {
   box-sizing: border-box;
   padding: 20px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 0 2px rgba(0, 0, 0, 0.24);
+  position: relative;
 }
 .app-result .year {
   display: inline-block;
@@ -45,5 +52,13 @@ export default {
   margin: 0;
   text-align: center;
   margin-bottom: 25px;
+}
+i {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: red;
 }
 </style>

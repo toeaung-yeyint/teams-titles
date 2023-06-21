@@ -12,6 +12,6 @@ dialog::backdrop {
 }
 .modal {
   padding: 30px;
-  width: 300px;
+  width: 350px;
 }
 </style> 

@@ -20,6 +20,7 @@
     </div>
     <div class="all-teams">
       <Team
+        @delete="confirmation"
         v-for="(team, index) in filteredTeam"
         :key="index"
         :src="team.logo"
@@ -28,6 +29,7 @@
       />
     </div>
     <Modal ref="addForm"><AddForm @close="closeAddFrom" /></Modal>
+    <Modal ref="deleteModal"><ConfirmDelete @cancel="cancelDelete" /></Modal>
   </div>
 </template>
 
@@ -37,12 +39,13 @@ import Team from "./components/Team.vue";
 import SearchBar from "./components/SearchBar.vue";
 import AddForm from "./components/AddForm.vue";
 import Modal from "./components/Modal.vue";
+import ConfirmDelete from "./components/ConfirmDelete.vue";
 import { db } from "./firebase";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import snackbar from "snackbar";
 
 export default {
-  components: { Button, Team, SearchBar, AddForm, Modal },
+  components: { Button, Team, SearchBar, AddForm, Modal, ConfirmDelete },
   data() {
     return {
       allTeams: [],
@@ -78,6 +81,12 @@ export default {
     closeAddFrom() {
       this.$refs.addForm.$el.close();
       snackbar.show("The team has been added successfully!");
+    },
+    confirmation() {
+      this.$refs.deleteModal.$el.showModal();
+    },
+    cancelDelete() {
+      this.$refs.deleteModal.$el.close();
     },
   },
   computed: {
