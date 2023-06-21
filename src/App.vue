@@ -2,7 +2,7 @@
 	<div class="container">
 		<h1>teams-titles</h1>
 		<p>
-			<strong>Built using:</strong> Vue, HTML, CSS, Firestore, Snackbar.js, Vite
+			<strong>Built using:</strong> Vue, HTML, CSS, Firebase, Snackbar.js, Vite
 		</p>
 		<p>
 			This fully-fledged Vue app allows users to view the winning history of top
