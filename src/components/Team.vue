@@ -15,7 +15,7 @@ export default {
   computed: {
     sortedYears() {
       return this.winningYears.sort((a, b) => {
-        return Number.parseInt(a) - Number.parseInt(b);
+        return Number.parseInt(b) - Number.parseInt(a);
       });
     },
   },
