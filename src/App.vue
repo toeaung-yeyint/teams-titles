@@ -37,7 +37,7 @@ import Team from "./components/Team.vue";
 import SearchBar from "./components/SearchBar.vue";
 import AddForm from "./components/AddForm.vue";
 import Modal from "./components/Modal.vue";
-import db from "./firebase";
+import { db } from "./firebase";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import snackbar from "snackbar";
 

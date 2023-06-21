@@ -24,7 +24,7 @@
     </div>
     <div class="input-field-logo">
       <label for="logo">Logo:</label>
-      <input type="file" accept=".webp" id="logo" required />
+      <input ref="inputFile" type="file" accept=".webp" id="logo" required />
     </div>
     <Button label="add" />
   </form>
@@ -32,30 +32,44 @@
 
 <script>
 import Button from "./Button.vue";
-import db from "../firebase";
+import { db, storage } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   components: { Button },
   emits: ["close"],
   data() {
     return {
       name: null,
-      logo: null,
       winningYears: null,
     };
   },
   methods: {
-    addTeam() {
-      // const colRef = collection(db, "teams");
-      // this.winningYears = this.winningYears.split(", ");
-      // this.winningYears = this.winningYears.map((year) =>
-      //   Number.parseInt(year)
-      // );
-      // addDoc(colRef, {
-      //   logo: this.url,
-      //   name: this.name,
-      //   winningYears: this.winningYears,
-      // });
+    async addTeam() {
+      this.name =
+        this.name.trim().substring(0, 1).toUpperCase() +
+        this.name.trim().substring(1).toLowerCase();
+      this.winningYears = this.winningYears.split(", ");
+      this.winningYears = this.winningYears.map((year) =>
+        Number.parseInt(year)
+      );
+
+      const file = this.$refs.inputFile.files[0];
+      // Create a storage reference with a unique filename
+      const storageRef = ref(storage, file.name);
+      // Upload the file to Firebase Storage
+      await uploadBytes(storageRef, file);
+      // Get the public download URL of the uploaded file
+      const url = await getDownloadURL(storageRef);
+
+      const colRef = collection(db, "teams");
+      await addDoc(colRef, {
+        logo: url,
+        name: this.name,
+        winningYears: this.winningYears,
+      });
+      this.name = "";
+      this.winningYears = "";
       this.$refs.addFrom.reset();
       this.$emit("close");
     },
