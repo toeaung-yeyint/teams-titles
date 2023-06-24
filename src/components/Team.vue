@@ -1,6 +1,6 @@
 <template>
 	<div class="app-result">
-		<img :src="src" alt="" />
+		<img :src="src" alt="" loading="lazy" />
 		<h2>{{ name }}</h2>
 		<div>Winning Years:</div>
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
