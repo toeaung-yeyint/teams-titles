@@ -18,7 +18,7 @@
 			<Button label="add a new team" @click="addTeam" />
 			<Button label="reset" type="reset" @click="reset" />
 		</div>
-		<div class="all-teams">
+		<div v-show="loaded" class="all-teams">
 			<Team
 				@delete="askConfirm"
 				v-for="(team, index) in filteredTeam"
@@ -27,6 +27,7 @@
 				:src="team.logo"
 				:name="team.name"
 				:winningYears="team.winningYears"
+				@loaded="showTeams"
 			/>
 		</div>
 		<Modal ref="addForm"
@@ -59,6 +60,7 @@ export default {
 			allTeams: [],
 			deleteDoc: null,
 			teamName: "",
+			loaded: false,
 		};
 	},
 	mounted() {
@@ -98,6 +100,9 @@ export default {
 		},
 		closeConfirmBox() {
 			this.$refs.deleteModal.$el.close();
+		},
+		showTeams() {
+			this.loaded = true;
 		},
 	},
 	computed: {

@@ -1,6 +1,6 @@
 <template>
 	<div class="app-result">
-		<img :src="src" alt="" @load="handleImageLoad" ref="image" loading="lazy" />
+		<img :src="src" alt="" @load="handleImageLoad" ref="image" />
 		<h2>{{ name }}</h2>
 		<div>Winning Years:</div>
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
@@ -13,7 +13,7 @@
 <script>
 export default {
 	props: ["id", "src", "name", "winningYears"],
-	emits: ["delete"],
+	emits: ["delete", "loaded"],
 	computed: {
 		sortedYears() {
 			return this.winningYears.sort((a, b) => {
@@ -26,7 +26,8 @@ export default {
 			this.$emit("delete", this.id);
 		},
 		handleImageLoad() {
-			this.$refs.image.style.visibility = "visible";
+			console.log("loaded");
+			this.$emit("loaded");
 		},
 	},
 };
@@ -48,7 +49,6 @@ export default {
 .app-result img {
 	width: 100%;
 	height: 160px;
-	visibility: hidden;
 	object-fit: contain;
 	margin-bottom: 20px;
 }
