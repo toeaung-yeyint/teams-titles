@@ -26,7 +26,6 @@ export default {
 			this.$emit("delete", this.id);
 		},
 		handleImageLoad() {
-			console.log("loaded");
 			this.$refs.image.style.visibility = "visible";
 		},
 	},
