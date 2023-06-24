@@ -1,6 +1,6 @@
 <template>
 	<div class="app-result">
-		<img :src="src" alt="" loading="lazy" />
+		<img :src="src" alt="" @load="handleImageLoad" ref="image" loading="lazy" />
 		<h2>{{ name }}</h2>
 		<div>Winning Years:</div>
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
@@ -25,6 +25,10 @@ export default {
 		handleDelete() {
 			this.$emit("delete", this.id);
 		},
+		handleImageLoad() {
+			console.log("loaded");
+			this.$refs.image.style.visibility = "visible";
+		},
 	},
 };
 </script>
@@ -45,6 +49,7 @@ export default {
 .app-result img {
 	width: 100%;
 	height: 160px;
+	visibility: hidden;
 	object-fit: contain;
 	margin-bottom: 20px;
 }
