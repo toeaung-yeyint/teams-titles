@@ -6,7 +6,7 @@
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
 			{{ year }}
 		</div>
-		<i class="fa-solid fa-xmark" @click="handleDelete"></i>
+		<i class="fa-solid fa-trash" @click="handleDelete"></i>
 	</div>
 </template>
 
@@ -26,7 +26,6 @@ export default {
 			this.$emit("delete", this.id);
 		},
 		handleImageLoad() {
-			console.log("loaded");
 			this.$emit("loaded");
 		},
 	},
@@ -59,11 +58,13 @@ export default {
 	margin-bottom: 25px;
 }
 i {
+	background: #52525b;
+	padding: 7px;
 	position: absolute;
-	top: 7px;
-	right: 7px;
-	font-size: 1.2rem;
+	top: 0px;
+	right: 0px;
+	font-size: 0.8rem;
 	cursor: pointer;
-	color: red;
+	color: white;
 }
 </style>
