@@ -6,7 +6,7 @@
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
 			{{ year }}
 		</div>
-		<i class="fa-solid fa-trash" @click="handleDelete"></i>
+		<i class="fa-solid fa-minus" @click="handleDelete"></i>
 	</div>
 </template>
 
@@ -61,7 +61,7 @@ i {
 	background: #52525b;
 	padding: 7px;
 	position: absolute;
-	top: 0px;
+	bottom: 0px;
 	right: 0px;
 	font-size: 0.8rem;
 	cursor: pointer;
