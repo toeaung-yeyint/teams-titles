@@ -6,7 +6,7 @@
 		<div class="year" v-for="(year, index) in sortedYears" :key="index">
 			{{ year }}
 		</div>
-		<i class="fa-solid fa-minus" @click="handleDelete"></i>
+		<i class="fa-solid fa-xmark" @click="handleDelete"></i>
 	</div>
 </template>
 
@@ -58,13 +58,16 @@ export default {
 	margin-bottom: 25px;
 }
 i {
-	background: #52525b;
-	padding: 7px;
+	background: #9ca3af;
+	padding: 5px;
 	position: absolute;
-	bottom: 0px;
-	right: 0px;
+	bottom: 10px;
+	right: 10px;
 	font-size: 0.8rem;
 	cursor: pointer;
 	color: white;
+}
+i:hover {
+	background: #52525b;
 }
 </style>
