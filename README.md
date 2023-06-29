@@ -6,4 +6,4 @@
 This fully-fledged Vue app allows users to view the winning history of top European football teams in the UEFA Champions League. Users can access the Champions League winning history of teams such as Real Madrid, Barcelona, Manchester United, Chelsea, Liverpool, Bayern Munich, AC Milan, Inter Milan, Juventus, Ajax, etc. Additionally, the app provides functionality for users to add new teams or remove existing ones.
 
 <br/>
-Built using: Vue, Options API,  HTML, CSS, Firebase, Snackbar.js, Vite
+Built using: Vue (Options API), HTML, CSS, JavaScript, Firebase, Snackbar.js, Vite

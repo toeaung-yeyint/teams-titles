@@ -2,7 +2,7 @@
 	<div class="container">
 		<h1>teams-titles</h1>
 		<p>
-			<strong>Built using:</strong> Vue, Options API, HTML, CSS, Firebase,
+			<strong>Built using:</strong> Vue (Options API), HTML, CSS, JavaScript, Firebase,
 			Snackbar.js, Vite
 		</p>
 		<p>
