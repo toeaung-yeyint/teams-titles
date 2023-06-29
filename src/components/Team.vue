@@ -58,7 +58,7 @@ export default {
   margin-bottom: 25px;
 }
 i {
-  background: #fecaca;
+  background: #d4d4d4;
   padding: 5px;
   position: absolute;
   top: 10px;
