@@ -2,7 +2,7 @@
 	<h2>Please confirm to delete the team.</h2>
 	<div class="buttons">
 		<Button label="Confirm" @click="deleteTeam" />
-		<Button label="Cancel" @click="handleCancel" type="cancel" />
+		<Button label="Cancel" @click="handleCancel" type="secondary" />
 	</div>
 </template>
 
