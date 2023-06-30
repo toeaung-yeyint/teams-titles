@@ -1,6 +1,6 @@
 <template>
-  <h2>Add a new team</h2>
-  <form @submit.prevent="addTeam" ref="addForm">
+  <h2>Update the team details</h2>
+  <form @submit.prevent="updateTeam" ref="updateForm">
     <div class="input-field">
       <label for="name">Name:</label>
       <input
@@ -32,21 +32,21 @@
         Please select an image file smaller than 50KB.
       </p>
     </div>
-    <Button label="add" />
+    <Button label="update" type="update" />
     <i class="fa-solid fa-xmark" @click="handleClose"></i>
   </form>
 </template>
-
-<script>
+  
+  <script>
 import Button from "./Button.vue";
 import { db, storage } from "../firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 as uuidv4 } from "uuid";
 
 export default {
   components: { Button },
-  emits: ["add", "close"],
+  props: ["updateDoc"],
+  emits: ["update", "close"],
   data() {
     return {
       id: null,
@@ -56,14 +56,14 @@ export default {
     };
   },
   methods: {
-    async addTeam() {
+    async updateTeam() {
       const file = this.$refs.inputFile.files[0];
       if (file.size > 50000) {
         this.showFileSizeWarning = true;
         return;
       } else {
         this.showFileSizeWarning = false;
-        this.id = uuidv4();
+        this.id = this.updateDoc;
         this.name = this.name.trim();
         this.winningYears = this.winningYears.split(", ");
         this.winningYears = this.winningYears.map((year) =>
@@ -77,16 +77,16 @@ export default {
         // Get the public download URL of the uploaded file
         const url = await getDownloadURL(storageRef);
 
-        const docRef = doc(db, "teams", this.id);
-        await setDoc(docRef, {
+        const docRef = doc(db, "teams", this.updateDoc);
+        await updateDoc(docRef, {
           logo: url,
           name: this.name,
           winningYears: this.winningYears,
         });
         this.name = "";
         this.winningYears = "";
-        this.$refs.addForm.reset();
-        this.$emit("add");
+        this.$refs.updateForm.reset();
+        this.$emit("update");
       }
     },
     handleClose() {
@@ -95,8 +95,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 h2 {
   color: black;
   text-align: center;
@@ -149,3 +149,4 @@ i {
   padding-left: 5px;
 }
 </style>
+  
