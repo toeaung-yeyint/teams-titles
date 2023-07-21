@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="updateTeam" ref="updateForm" class="text-sm">
     <i
-      class="fa-solid fa-xmark text-red-600 text-right text-2xl block mb-2 cursor-pointer"
+      class="fa-solid fa-xmark text-red-600 text-right text-3xl block mb-2 cursor-pointer"
       @click="handleClose"
     ></i>
     <h2 class="text-2xl font-bold uppercase mb-6 text-center">

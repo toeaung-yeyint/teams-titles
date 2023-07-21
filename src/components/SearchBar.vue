@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent
-    class="flex border-2 flex-grow items-center focus-within:border-black dark:focus-within:border-white"
+    class="dark:border-gray-600 flex border-2 flex-grow items-center focus-within:border-black dark:focus-within:border-white"
   >
     <input
       type="text"
