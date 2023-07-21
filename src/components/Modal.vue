@@ -1,5 +1,5 @@
 <template>
-  <dialog class="modal"><slot></slot></dialog>
+  <dialog class="modal w-[450px] p-6"><slot></slot></dialog>
 </template>
 
 <script>
@@ -9,15 +9,5 @@ export default {};
 <style scoped>
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.7);
-}
-.modal {
-  padding: 30px;
-  width: 400px;
-}
-@media screen and (max-width: 600px) {
-  .modal {
-    width: auto;
-    margin: auto 20px;
-  }
 }
 </style>

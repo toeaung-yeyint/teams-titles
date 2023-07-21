@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses">
+  <button class="uppercase px-4 py-2 text-sm" :class="buttonClasses">
     {{ label }}
   </button>
 </template>
@@ -9,47 +9,14 @@ export default {
   props: ["label", "type"],
   computed: {
     buttonClasses() {
-      return {
-        update: this.type === "update",
-        delete: this.type === "delete",
-        secondary: this.type === "secondary",
+      const classMap = {
+        primary: "bg-gray-600 hover:bg-gray-800 text-white",
+        secondary: "bg-neutral-200 hover:bg-neutral-300 text-black",
+        update: "bg-sky-500 hover:bg-sky-600  text-white",
+        delete: "bg-red-500 hover:bg-red-600 text-white",
       };
+      return classMap[this.type] || "";
     },
   },
 };
 </script>
-
-<style scroped>
-button {
-  background: #52525b;
-  outline: 0;
-  border: 0;
-  color: white;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-button:hover {
-  background: black;
-}
-.update {
-  background: #0ea5e9;
-}
-.update:hover {
-  background: #0284c7;
-}
-.delete {
-  background: #ef4444;
-}
-.delete:hover {
-  background: #dc2626;
-}
-.secondary {
-  background: white;
-  color: #404040;
-  border: 1px solid black;
-}
-.secondary:hover {
-  background: #f5f5f5;
-}
-</style>

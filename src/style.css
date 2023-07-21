@@ -1,5 +1,9 @@
 @import "../node_modules/snackbar/dist/snackbar.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
 	overflow-y: scroll;
 }
